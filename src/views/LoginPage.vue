@@ -1,15 +1,29 @@
 <template lang="pug">
-  .test Login Page
+    .form-container
+        .form-container__wrapper
+            login-form
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import LoginForm from '@/components/LoginForm.vue'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld,
-  },
-};
+    name: 'Home',
+    components: {
+        LoginForm,
+    },
+}
 </script>
+<style lang="scss" scoped>
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &__wrapper {
+        width: 400px;
+    }
+}
+</style>
