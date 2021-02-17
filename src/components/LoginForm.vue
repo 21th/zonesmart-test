@@ -1,35 +1,52 @@
 <template lang="pug">
     .login-form
         h1.login-form__headline Вход
-        form(@submit.prevent="authenticate")
+        form(@submit.prevent="onSubmit")
             base-input(
                 label="E-mail или телефон"
-                v-model="login"
+                v-model="form_data.email"
             )
             base-input(
                 label="Пароль"
-                v-model="password"
+                v-model="form_data.password"
                 type="password"
             )
-            base-button Войти
+            base-button(:loading="loading") Войти
 </template>
 
 <script>
 import BaseInput from '@/components/BaseInput.vue'
 import BaseButton from '@/components/BaseButton.vue'
+import { mapActions } from 'vuex'
 
 export default {
     name: 'LoginForm',
     components: { BaseButton, BaseInput },
     data() {
         return {
-            login: '',
-            password: '',
+            form_data: {
+                email: 'test@zonesmart.ru',
+                password: '4815162342test',
+            },
+            loading: false,
         }
     },
     methods: {
-        authenticate(e) {
-            console.log('login', e)
+        ...mapActions({ authenticate: 'auth/authenticate' }),
+        async onSubmit() {
+            this.loading = true
+            try {
+                const response = await this.authenticate(this.form_data)
+                console.log('login', response)
+                this.loading = false
+                await this.$router.push({ name: 'OrderTable' })
+            } catch (e) {
+                console.error('error', e)
+                this.loading = false
+            }
+            // AuthService.authenticate(this.form_data)
+            //     .then((r) => { console.log('login', r) })
+            //     .catch((e) => { console.error('login', e) })
         },
     },
 }

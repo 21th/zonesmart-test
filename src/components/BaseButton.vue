@@ -1,18 +1,27 @@
 <template lang="pug">
-button
-    slot(name="default")
+button(:disabled="loading || $attrs.disabled")
+    transition(name="fade" mode="out-in")
+        div(v-if="!loading")
+            slot(name="default")
+        span(v-else) Loading...
 </template>
 
 <script>
 export default {
     name: 'BaseButton',
+    props: {
+        loading: {
+            type: Boolean,
+            default: false,
+        },
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 button {
     border: none;
-    background-color: var(--accent-color);
+    background-color: var(--accent-green-color);
     width: 100%;
     border-radius: 4px;
     text-transform: uppercase;
@@ -28,6 +37,11 @@ button {
 
     &:hover {
         cursor: pointer;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: var(--icon-gray-color);
     }
 }
 
