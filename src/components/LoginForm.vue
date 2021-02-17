@@ -36,17 +36,13 @@ export default {
         async onSubmit() {
             this.loading = true
             try {
-                const response = await this.authenticate(this.form_data)
-                console.log('login', response)
+                await this.authenticate(this.form_data)
                 this.loading = false
                 await this.$router.push({ name: 'OrderTable' })
             } catch (e) {
                 console.error('error', e)
                 this.loading = false
             }
-            // AuthService.authenticate(this.form_data)
-            //     .then((r) => { console.log('login', r) })
-            //     .catch((e) => { console.error('login', e) })
         },
     },
 }
