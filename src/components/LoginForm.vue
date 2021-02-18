@@ -62,6 +62,7 @@ export default {
         font-size: 36px;
         font-weight: 500;
         margin-bottom: 25px;
+        color: $primary-dark-blue;
     }
 
     form {

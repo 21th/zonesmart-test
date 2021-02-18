@@ -9,5 +9,6 @@
 
 #app {
     min-height: 100vh;
+    background-color: #F6F9FC;
 }
 </style>

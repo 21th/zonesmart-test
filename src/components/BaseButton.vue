@@ -21,7 +21,7 @@ export default {
 <style lang="scss" scoped>
 button {
     border: none;
-    background-color: var(--accent-green-color);
+    background-color: $accent-green-color;
     width: 100%;
     border-radius: 4px;
     text-transform: uppercase;
@@ -41,7 +41,7 @@ button {
 
     &:disabled {
         cursor: not-allowed;
-        background-color: var(--icon-gray-color);
+        background-color: $icon-gray-color;
     }
 }
 
