@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         async getOrderList() {
-            const response = await OrderService.getOrderList({ limit: 5 })
+            const response = await OrderService.getOrderList({ limit: 15 })
             this.order_list = response.data.results
         },
     },

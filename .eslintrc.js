@@ -16,6 +16,7 @@ module.exports = {
     'semi': ['error', 'never'],
     'indent': ["error", 4],
     'camelcase': 'off',
+    'no-param-reassign': ["error", { "props": false }],
   },
   overrides: [
     {

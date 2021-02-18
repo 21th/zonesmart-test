@@ -24,6 +24,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 4px;
 
     &--clickable:hover {
         cursor: pointer;
