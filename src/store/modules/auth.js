@@ -13,15 +13,6 @@ export default {
     },
     actions: {
         authenticate: (context, payload) => new Promise((resolve, reject) => {
-            // try {
-            //     const response = AuthService.authenticate(payload)
-            //     context.commit('SET_TOKEN', response.data)
-            //     context.commit('SET_USER_STATE')
-            //     resolve(response.data)
-            // } catch (e) {
-            //     reject(e)
-            // }
-
             AuthService.authenticate(payload)
                 .then((response) => {
                     context.commit('SET_TOKEN', response.data)
@@ -30,17 +21,6 @@ export default {
                 })
                 .catch((err) => { reject(err) })
         }),
-        // LOGOUT: (context) => new Promise((resolve) => {
-        //     AuthService.logout()
-        //         .then(() => {
-        //             context.commit('RESET_ALL');
-        //             resolve();
-        //         })
-        //         .catch(() => {
-        //             context.commit('RESET_ALL');
-        //             resolve();
-        //         });
-        // }),
     },
     mutations: {
         SET_USER_STATE: (state) => {
