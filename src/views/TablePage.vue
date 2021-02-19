@@ -41,7 +41,7 @@ export default {
                 })
                 this.order_list = response.data.results
                 this.count = response.data.count
-                if (this.offset >= this.count) {
+                if (this.offset > this.count) {
                     this.offset = 0
                     await this.getOrderList()
                 }
