@@ -59,6 +59,7 @@ export default {
 <style lang="scss" scoped>
 .base-checkbox {
     position: relative;
+    width: 0;
     & input {
         appearance: none;
         position: absolute;
@@ -77,6 +78,10 @@ export default {
         border: 2px solid rgba($primary-dark-blue, .5);
     }
 
+    &:hover input + &__box {
+        background-color: rgba($primary-dark-blue, .05);
+    }
+
     &__box {
         box-sizing: border-box;
         display: inline-block;
@@ -85,6 +90,7 @@ export default {
         border: 1px solid $icon-gray-color;
         border-radius: 3px;
         position: relative;
+        transition: background .2s;
 
         &:after {
             content: "";

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import JWTService from '@/services/JWTService'
 
-const BASE_URL = process.env.VUE_APP_API_URL
+const BASE_URL = process.env.VUE_APP_API_URL || 'https://zonesmart.su/api/v1'
 const REFRESH_TOKEN_URL = 'https://zonesmart.su/api/v1/auth/jwt/refresh/'
 
 const REDIRECT_URL = '/'
@@ -17,7 +17,6 @@ const APIService = axios.create({
 APIService.interceptors.request.use(
     (config) => {
         const token = JWTService.getToken()
-        // eslint-disable-next-line no-param-reassign
         if (token) config.headers.Authorization = `JWT ${token}`
         return config
     },

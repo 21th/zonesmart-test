@@ -11,23 +11,23 @@
                 v-model="form_data.password"
                 type="password"
             )
+            transition(name="slide")
+                p.login-form__error-message(v-if="error_message") {{ error_message }}
             base-button(:loading="loading") Войти
 </template>
 
 <script>
-import BaseInput from '@/components/BaseInput.vue'
-import BaseButton from '@/components/BaseButton.vue'
 import { mapActions } from 'vuex'
 
 export default {
     name: 'LoginForm',
-    components: { BaseButton, BaseInput },
     data() {
         return {
             form_data: {
                 email: 'test@zonesmart.ru',
                 password: '4815162342test',
             },
+            error_message: '',
             loading: false,
         }
     },
@@ -40,7 +40,7 @@ export default {
                 this.loading = false
                 await this.$router.push({ name: 'OrderTable' })
             } catch (e) {
-                console.error('error', e)
+                this.error_message = e.response?.data?.detail
                 this.loading = false
             }
         },
@@ -66,7 +66,13 @@ export default {
     }
 
     form {
+        display: flex;
+        flex-direction: column;
         width: 100%;
+    }
+
+    &__error-message {
+        color: $error-red;
     }
 }
 

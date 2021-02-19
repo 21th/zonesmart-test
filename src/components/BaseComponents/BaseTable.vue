@@ -37,7 +37,7 @@ div(class="base-table")
                             :column="item[column.value]"
                             :row="item"
                             :toggle="toggleRow"
-                        ) {{ item[column.value] }}
+                        ) {{ item[column.value] || defaultValue }}
                 transition(name="slide")
                     tr(class="base-table__expand-row" v-if="item.row_opened" key="expand")
                         td(:colspan="selectable ? headers.length + 1 : headers.length")
@@ -45,11 +45,8 @@ div(class="base-table")
 </template>
 
 <script>
-import BaseCheckbox from '@/components/BaseCheckbox.vue'
-
 export default {
     name: 'BaseTable',
-    components: { BaseCheckbox },
     props: {
         items: {
             type: Array,
@@ -70,6 +67,10 @@ export default {
         headerGap: {
             type: Boolean,
             default: false,
+        },
+        defaultValue: {
+            type: [String, Number],
+            default: '',
         },
     },
     data() {
@@ -160,6 +161,7 @@ export default {
 
         td {
             color: rgba($primary-dark-blue, 0.5);
+            width: 0;
 
             &:first-child {
                 border-top-left-radius: 6px;

@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import BaseTable from '@/components/BaseTable.vue'
 import { formatCurrency } from '@/utils/currency-helpers'
 
 export default {
     name: 'OrderSubtable',
-    components: { BaseTable },
     props: {
         items: {
             type: Array,

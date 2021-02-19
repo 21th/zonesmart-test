@@ -22,11 +22,8 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
-
 export default {
     name: 'BaseInput',
-    components: { BaseIcon },
     inheritAttrs: false,
     data() {
         return {
@@ -73,6 +70,7 @@ export default {
     display: flex;
     align-items: center;
     font-family: 'Roboto', sans-serif;
+    background-color: #fff;
 
     min-height: 52px;
 
