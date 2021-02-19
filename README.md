@@ -1,29 +1,17 @@
 # zonesmart-test
 
-## Project setup
-```
-npm install
-```
+## Установка
+1. Склонируйте репоизторий
+1. Создайте .env файл из примера
+    ```
+    cp .env.example .env
+    ```
+1. Установите зависимости
+    ```
+    npm install
+    ```
 
-### Compiles and hot-reloads for development
+### Запуск
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
