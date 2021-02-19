@@ -41,6 +41,10 @@ export default {
                 })
                 this.order_list = response.data.results
                 this.count = response.data.count
+                if (this.offset >= this.count) {
+                    this.offset = 0
+                    await this.getOrderList()
+                }
                 this.loading = false
             } catch (e) {
                 console.error(e.response)
@@ -59,6 +63,7 @@ export default {
         // eslint-disable-next-line prefer-arrow-callback,func-names
         onSearch: _debounce(function (val) {
             this.search = val
+            this.offset = 0
             this.getOrderList()
         }, 300),
     },
