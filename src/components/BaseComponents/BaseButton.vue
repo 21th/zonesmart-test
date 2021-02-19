@@ -12,7 +12,8 @@ button.base-button(
     transition(name="fade" mode="out-in")
         div(v-if="!loading")
             slot(name="default")
-        span(v-else) Loading...
+        span(v-else)
+            base-icon(name="loader")
 </template>
 
 <script>

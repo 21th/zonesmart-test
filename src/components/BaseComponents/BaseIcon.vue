@@ -25,6 +25,10 @@ export default {
     align-items: center;
     justify-content: center;
 
+    img {
+        max-height: 52px;
+    }
+
     &--clickable:hover {
         cursor: pointer;
     }
